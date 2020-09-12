@@ -1,4 +1,5 @@
 const { Product } = require("./Product");
+const { DefaultProduct } = require("./DefaultProduct");
 const { SuperSaleProduct } = require("./SuperSaleProduct");
 const { MegaCoverageProduct } = require("./MegaCoverageProduct");
 const { FullCoverageProduct } = require("./FullCoverageProduct");
@@ -20,6 +21,7 @@ const createCustomProduct = ({ name, sellIn, price }) => {
 
 module.exports = {
   Product,
+  DefaultProduct,
   SuperSaleProduct,
   createCustomProduct,
   MegaCoverageProduct,
