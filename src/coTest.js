@@ -1,9 +1,15 @@
 const { Product } = require('./products');
+const { createCustomProduct } = require("./products");
 
 class CarInsurance {
   constructor(products = []) {
-    this.products = products;
+    this.products = this.createCustomProducts(products);
   }
+
+  createCustomProducts(products) {
+    return products.map((product) => createCustomProduct(product));
+  }
+
   updatePrice() {
     for (var i = 0; i < this.products.length; i++) {
       if (this.products[i].name != 'Full Coverage' && this.products[i].name != 'Special Full Coverage') {
