@@ -1,4 +1,5 @@
 const { Product } = require("./Product");
+const { config } = require("../config");
 
 class SuperSaleProduct extends Product {
   constructor(name, sellIn, price) {
@@ -6,7 +7,20 @@ class SuperSaleProduct extends Product {
   }
 
   updatePrice() {
-    // TODO
+    // price velocity twice than normal
+    const priceVelocity = config.priceVelocity * 2;
+
+    this.decrementSellIn();
+
+    // update price if allowed
+    const newPrice = this._calculateNewPrice(priceVelocity);
+    if (newPrice >= config.minAllowedPrice) this.price = newPrice;
+
+    return this.price;
+  }
+
+  _calculateNewPrice(priceVelocity) {
+    return this.price - priceVelocity;
   }
 }
 
