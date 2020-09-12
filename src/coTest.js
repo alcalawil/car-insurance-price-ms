@@ -1,10 +1,4 @@
-class Product {
-  constructor(name, sellIn, price) {
-    this.name = name;
-    this.sellIn = sellIn;
-    this.price = price;
-  }
-}
+const { Product } = require('./products');
 
 class CarInsurance {
   constructor(products = []) {
