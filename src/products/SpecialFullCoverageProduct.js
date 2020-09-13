@@ -1,34 +1,27 @@
 const { Product } = require("./Product");
 const { config } = require("../config");
 
+const getVelocityWeight = (sellIn) => {
+  if (sellIn <= 5) return 3;
+  if (sellIn <= 10) return 2;
+};
+
 class SpecialFullCoverageProduct extends Product {
   constructor(name, sellIn, price) {
     super(name, sellIn, price);
   }
 
   updatePrice() {
-    let priceVelocity = config.priceVelocity;
-    this.decrementSellIn();
+    if (this.sellIn <= 0) return this.price = 0;
 
-    if (this.sellIn === 0) {
-      // once expired, price is zero
-      return (this.price = 0);
-    }
-
-    if (this.sellIn <= 10) {
-      // less than 10 days
-      priceVelocity = config.priceVelocity * 2;
-    }
-
-    if (this.sellIn <= 5) {
-      // less than 5 days
-      priceVelocity = config.priceVelocity * 3;
-    }
+    const weight = getVelocityWeight(this.sellIn);
+    const priceVelocity = config.priceVelocity * weight;
 
     // update price if allowed
     const newPrice = this._calculateNewPrice(priceVelocity);
     if (newPrice <= config.maxAllowedPrice) this.price = newPrice;
-
+    
+    this._decrementSellIn();
     return this.price;
   }
 

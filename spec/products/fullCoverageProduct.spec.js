@@ -45,7 +45,7 @@ describe("Full coverage product tests", () => {
 
   it("price shouldn't be greater than maximum allowed price", () => {
     // Arrange
-    const sellIn = 30;
+    const sellIn = 10;
     const timesToForceExpire = sellIn + 1;
     const initPrice = config.maxAllowedPrice - 1;
     const expectedPrice = config.maxAllowedPrice;

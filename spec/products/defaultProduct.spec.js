@@ -45,7 +45,7 @@ describe("Default Product tests", () => {
 
   it("price shouldn't be less than minimum allowed price", () => {
     // Arrange
-    const sellIn = 30;
+    const sellIn = 10;
     const timesToForceExpire = sellIn + 1;
     const initPrice = config.minAllowedPrice + 1;
     const expectedPrice = config.minAllowedPrice;
