@@ -8,12 +8,12 @@ class SuperSaleProduct extends Product {
 
   updatePrice() {
     // price velocity twice than normal
+    // TODO: once expired, velocity is duplicate again? 2x + 2x = 4x?
     const priceVelocity = config.priceVelocity * 2;
 
-    
     // update price if allowed
     const newPrice = this._calculateNewPrice(priceVelocity);
-    if (newPrice >= config.minAllowedPrice) this.price = newPrice;
+    this.setPrice(newPrice);
     
     this._decrementSellIn();
     return this.price;

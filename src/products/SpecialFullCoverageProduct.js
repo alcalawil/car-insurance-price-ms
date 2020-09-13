@@ -19,7 +19,7 @@ class SpecialFullCoverageProduct extends Product {
 
     // update price if allowed
     const newPrice = this._calculateNewPrice(priceVelocity);
-    if (newPrice <= config.maxAllowedPrice) this.price = newPrice;
+    this.setPrice(newPrice);
     
     this._decrementSellIn();
     return this.price;
