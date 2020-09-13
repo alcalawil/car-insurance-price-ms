@@ -4,20 +4,17 @@ const { config } = require("../config");
 class FullCoverageProduct extends Product {
   constructor(name, sellIn, price) {
     super(name, sellIn, price);
+    this.priceVelocity = config.priceVelocity;
   }
 
   updatePrice() {
-    let priceVelocity = config.priceVelocity;
-    
-    if (this.sellIn === 0) {
-      // once expired, duplicate velocity
-      priceVelocity = config.priceVelocity * 2;
-    }
-    
+    // once expired, duplicate velocity
+    if (this.sellIn === 0) this.priceVelocity *= 2;
+
     // update price if allowed
-    const newPrice = this._calculateNewPrice(priceVelocity);
+    const newPrice = this._calculateNewPrice(this.priceVelocity);
     this.setPrice(newPrice);
-    
+
     this._decrementSellIn();
     return this.price;
   }

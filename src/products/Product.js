@@ -27,8 +27,7 @@ class Product {
     this.sellIn--;
   }
 
-  updatePrice() {
-  }
+  updatePrice() {}
 }
 
 module.exports = {
