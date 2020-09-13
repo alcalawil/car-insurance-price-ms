@@ -3,8 +3,7 @@
   - `npm run after-30-days`
 
 ## TODO
-  - Add tests (jest)
-  - review calculations
+  - fix calculations bug
   - add functions descriptions
   - Improve readme
   - add Dockerfile?

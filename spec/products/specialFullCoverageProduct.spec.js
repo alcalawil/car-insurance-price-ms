@@ -24,7 +24,7 @@ describe("Special coverage product tests", () => {
     expect(specialFullCoverageProduct.price).toEqual(expectedPrice);
   });
 
-  it("price should increase at twice default velocity price when sellIn is less or equal 5 and no expired", () => {
+  it("price should increase three times default velocity price when sellIn is less or equal 5 and no expired", () => {
     // Arrange
     const sellIn = 5; // TODO: use a random value between 0 and 5
     const initPrice = 1;
