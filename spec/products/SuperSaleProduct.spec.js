@@ -22,4 +22,23 @@ describe("Super sale coverage product tests", () => {
     // Assert
     expect(superSaleProduct.price).toEqual(expectedPrice);
   });
+
+  it("price shouldn't be less than minimum allowed price", () => {
+    // Arrange
+    const sellIn = 2;
+    const initPrice = 2;
+    const expectedPrice = config.minAllowedPrice;
+
+    const superSaleProduct = new SuperSaleProduct(
+      PRODUCT_NAMES.SuperSale,
+      sellIn,
+      initPrice
+    );
+
+    // Act
+    executeMany(() => superSaleProduct.updatePrice(), sellIn);
+
+    // Assert
+    expect(superSaleProduct.price).toEqual(expectedPrice);
+  });
 });

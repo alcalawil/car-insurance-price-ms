@@ -63,11 +63,11 @@ describe("Special coverage product tests", () => {
     expect(specialFullCoverageProduct.price).toEqual(expectedPrice);
   });
 
-  it.skip("price shouldn't be greater than maximum allowed price", () => {
+  it("price shouldn't be greater than maximum allowed price", () => {
     // Arrange
-    const sellIn = 2;
-    const initPrice = config.maxAllowedPrice - 1;
-    const expectedPrice = config.maxAllowedPrice;
+    const sellIn = 3;
+    const initPrice = config.maxAllowedPrice - 10;
+    const expectedPrice = initPrice + config.priceVelocity * 3 * sellIn;
 
     const specialFullCoverageProduct = new SpecialFullCoverageProduct(
       PRODUCT_NAMES.SpecialFullCoverage,
@@ -76,7 +76,7 @@ describe("Special coverage product tests", () => {
     );
 
     // Act
-    executeMany(() => specialFullCoverageProduct.updatePrice(), sellIn - 1);
+    executeMany(() => specialFullCoverageProduct.updatePrice(), sellIn);
 
     // Assert
     expect(specialFullCoverageProduct.price).toEqual(expectedPrice);
