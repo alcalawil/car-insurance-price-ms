@@ -2,10 +2,9 @@
   "name": "car-insurance-price-ms",
   "version": "1.0.0",
   "description": "Car insurance price updater",
-
   "scripts": {
     "after-30-days": "node ./src/scripts/runAfter30days.js",
-    "test": "mocha spec/*.js"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -16,5 +15,9 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.13",
+    "jest": "^26.4.2"
   }
 }

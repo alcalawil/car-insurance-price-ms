@@ -10,12 +10,12 @@ class SuperSaleProduct extends Product {
     // price velocity twice than normal
     const priceVelocity = config.priceVelocity * 2;
 
-    this.decrementSellIn();
-
+    
     // update price if allowed
     const newPrice = this._calculateNewPrice(priceVelocity);
     if (newPrice >= config.minAllowedPrice) this.price = newPrice;
-
+    
+    this._decrementSellIn();
     return this.price;
   }
 

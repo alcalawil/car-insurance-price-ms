@@ -8,17 +8,17 @@ class FullCoverageProduct extends Product {
 
   updatePrice() {
     let priceVelocity = config.priceVelocity;
-    this.decrementSellIn();
-
+    
     if (this.sellIn === 0) {
       // once expired, duplicate velocity
       priceVelocity = config.priceVelocity * 2;
     }
-
+    
     // update price if allowed
     const newPrice = this._calculateNewPrice(priceVelocity);
     if (newPrice <= config.maxAllowedPrice) this.price = newPrice;
-
+    
+    this._decrementSellIn();
     return this.price;
   }
 

@@ -9,16 +9,13 @@ class Product {
   /**
    * Decrements sellIn by 1 and stops at zero if allowNegative is set to false
    */
-  decrementSellIn(allowNegative = true) {
+  _decrementSellIn(allowNegative = true) {
     if (!allowNegative && this.sellIn < 1) {
       return this.sellIn = 0;
     }
     
     this.sellIn--;
   }
-
-  // abstract method
-  updatePrice() {}
 }
 
 module.exports = {

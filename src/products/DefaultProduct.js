@@ -8,7 +8,6 @@ class DefaultProduct extends Product {
 
   updatePrice() {
     let priceVelocity = config.priceVelocity;
-    this.decrementSellIn();
 
     if (this.sellIn === 0) {
       // once expired, duplicate velocity
@@ -19,6 +18,7 @@ class DefaultProduct extends Product {
     const newPrice = this._calculateNewPrice(priceVelocity);
     if (newPrice >= config.minAllowedPrice) this.price = newPrice;
 
+    this._decrementSellIn();
     return this.price;
   }
 
